@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - eTUITOR</title>
+    @Styles.Render("~/Content/css")
+    @if (IsSectionDefined("css"))
+    {
+        @RenderSection("css", required: false)
+    }
+</head>
+<body>
+    @Html.Partial("~/Views/Shared/Common/_Header.cshtml")
+    <div class="main-content">
+        @RenderBody()
+        <!-- footer -->
+        @Html.Partial("~/Views/Shared/Common/_Footer.cshtml")
+        <!-- /footer -->
+    </div>
+    @Scripts.Render("~/Content/js")
+    <script src="~/Content/vendor/jquery/jquery-plugin-collection.js"></script>
+    @if (IsSectionDefined("scripts"))
+    {
+        @RenderSection("scripts", required: false)
+    }
+</body>
+</html>
