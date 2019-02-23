@@ -28,6 +28,7 @@ namespace eTUTOR
                       "~/Content/build/css/css-plugin-collections.css",
                       "~/Content/build/css/pe-icon-7-stroke.css",
                       "~/Content/build/css/flaticon.css"
+
             ));
             bundles.Add(new ScriptBundle("~/Content/js").Include(
                       "~/Content/vendor/jquery/jquery.min.js",
