@@ -17,5 +17,13 @@ namespace eTUTOR.Controllers
         {
             return View();
         }
+        public ActionResult InfoOfTutor()
+        {
+            return View();
+        }
+        public ActionResult RegisterTutor()
+        {
+            return View();
+        }
     }
 }
