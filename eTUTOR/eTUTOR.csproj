@@ -563,6 +563,7 @@
     <Content Include="Content\vendor\bootstrap\css\bootstrap-reboot.min.css" />
     <Content Include="Content\vendor\bootstrap\css\bootstrap.css" />
     <Content Include="Content\vendor\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Content\vendor\bootstrap\css\listoftutor.component.css" />
     <Content Include="Content\vendor\bootstrap\css\register.component.css" />
     <Content Include="Content\vendor\bootstrap\js\bootstrap.bundle.js" />
     <Content Include="Content\vendor\bootstrap\js\bootstrap.bundle.min.js" />
@@ -747,6 +748,7 @@
     <Content Include="Views\Shared\_Layout_homepage.cshtml" />
     <Content Include="Views\User\Register.cshtml" />
     <Content Include="Views\Tutor\ListOfTutors.cshtml" />
+    <Content Include="Views\Tutor\ViewDetailTutor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
