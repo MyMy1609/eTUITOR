@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
 
     ViewBag.Title = "Register";
     Layout = null;
@@ -13,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- LINEARICONS -->
-    <link rel="stylesheet" href="fonts/linearicons/style.css">
+    <link href="~/Content/build/css/styleRegister.css" rel="stylesheet" />
 
     <!-- STYLE CSS -->
     <link href="~/Content/vendor/bootstrap/css/register.component.css" rel="stylesheet" />
@@ -24,17 +23,17 @@
     <div class="wrapper">
         <div class="inner">
             <div class="register-form flash hide">
-                <form action="">
+                <form action="#" method="post" onsubmit="return checkConfirmPassword()">
                     <img src="~/Content/img/register/registration-form-1.png" alt="" class="image-1" />
                     <h3>Đăng ký tài khoản</h3>
                     <div class="default">
                         <div class="form-holder">
                             <span class="lnr lnr-user"></span>
-                            <input type="text" class="form-control" placeholder="Họ và tên">
+                            <input type="text" class="form-control" name="fullname" placeholder="Họ và tên">
                         </div>
                         <div class="form-holder">
                             <span class="lnr lnr-users"></span>
-                            <input type="text" class="form-control" placeholder="Tên tài khoản">
+                            <input type="text" class="form-control" name="username" placeholder="Tên tài khoản">
                         </div>
                         <div class="form-holder">
                             <span class="lnr lnr-phone-handset"></span>
@@ -42,11 +41,16 @@
                         </div>
                         <div class="form-holder">
                             <span class="lnr lnr-envelope"></span>
-                            <input type="text" class="form-control" placeholder="Email">
+                            <input type="text" class="form-control" name="email" placeholder="Email">
                         </div>
                         <div class="form-holder">
                             <span class="lnr lnr-lock"></span>
-                            <input type="password" class="form-control" placeholder="Mật khẩu">
+                            <input type="password" class="form-control" name="password" placeholder="Mật khẩu">
+                        </div>
+                        <div class="form-holder">
+                            <span class="lnr lnr-lock"></span>
+                            <input type="password" class="form-control" name="confirmpassword" placeholder="Nhập lại mật khẩu">
+                            <div class="password-error" style="color:red;margin-top:10px;"></div>
                         </div>
                     </div>
                     <div class="sub">
@@ -65,8 +69,8 @@
                             </label>
                         </div>
                     </div>
-                    <button>
-                        <span>Register</span>
+                    <button  type="submit" id="btn-register"  disabled>
+                        <span >Đăng Ký</span>
                     </button>
                 </form>
 
@@ -80,7 +84,16 @@
         $(document).ready(function () {
             $('input[type="radio"][name="role"]').on('change', function () {
                 var valRole = $(this).val();
+                var form = [
+                    "@Url.Action("RegisterTuTor","User")",
+                    "@Url.Action("RegisterStudent", "User")",
+                    "@Url.Action("RegisterParent", "User")"
+
+                ];
+               
                 var registerForm = $('.register-form');
+                $(".register-form form").attr("action", form[valRole]);
+                $("#btn-register").removeAttr("disabled");
                 var duration = registerForm.hasClass("extend") ? 1000 : 200
                 registerForm.removeClass("hide").removeClass("extend");
                 renderSubForm(valRole);
@@ -92,22 +105,34 @@
                 }, duration);
             })
         })
+        function checkConfirmPassword() {
+            var check = true;
+            $(".password-error").empty();
+            var password = $("input[name='password']").val();
+            var rePassword = $("input[name='confirmpassword']").val();
+            if (password != rePassword) {
+                check = false;
+                $(".password-error").html('pssword is not match with confirm password');
+            }
+            console.log(password);
+            return check;
+        }
         function renderSubForm(tab) {
             var teacherContent = `	<div class="form-holder">
                                             <span class="lnr lnr-user"></span>
-                                            <input type="text" class="form-control" placeholder="Địa chỉ">
+                                            <input type="text" class="form-control" name="address"  placeholder="Địa chỉ">
                                         </div>
                                         <div class="form-holder">
                                             <span class="lnr lnr-phone-handset"></span>
-                                            <input type="text" class="form-control" placeholder="Ngày sinh">
+                                            <input type="text" class="form-control" name="birthday" placeholder="Ngày sinh">
                                         </div>
                                         <div class="form-holder">
                                             <span class="lnr lnr-envelope"></span>
-                                            <input type="text" class="form-control" placeholder="Chuyên ngành giảng dạy	">
+                                            <input type="text" class="form-control" name="specialized" placeholder="Chuyên ngành giảng dạy	">
                                         </div>
                                         <div class="form-holder">
                                             <span class="lnr lnr-envelope"></span>
-                                            <select name="" id="" class="form-control" style="border: none">
+                                            <select name="experience" id="" class="form-control" style="border: none">
                                             <option value="" disabled selected>Năm kinh nghiệm</option>
                                             <option value="1">Không kinh nghiệm</option>
                                             <option value="2">+1</option>
@@ -118,19 +143,19 @@
                                         </div>
                                         <div class="form-holder">
                                             <span class="lnr lnr-lock"></span>
-                                            <input type="file" class="form-control" placeholder="Bằng cấp">
+                                            <input type="file" class="form-control" name="certificate" placeholder="Bằng cấp">
                                         </div>`;
             var parentContent = `   <div class="form-holder">
                                             <span class="lnr lnr-user"></span>
-                                            <input type="text" class="form-control" placeholder="Tên học sinh">
+                                            <input type="text" class="form-control" name="fullname" placeholder="Tên học sinh">
                                         </div>
                                         <div class="form-holder">
                                             <span class="lnr lnr-lock"></span>
-                                            <input type="text" class="form-control" placeholder="Ngày sinh">
+                                            <input type="text" class="form-control" name="birthday" placeholder="Ngày sinh">
                                         </div>
                                         <div class="form-holder">
                                             <span class="lnr lnr-phone-handset"></span>
-                                            <select name="" id="" class="form-control" style="border: none">
+                                            <select name="class" id="" class="form-control" style="border: none">
                                                 <option value="" disabled selected>Lớp</option>
                                                 <option value="1">Lớp 1</option>
                                                 <option value="2">Lớp 2</option>
@@ -159,15 +184,15 @@
             var studentContent = `
                                         <div class="form-holder">
                                             <span class="lnr lnr-lock"></span>
-                                            <input type="text" class="form-control" placeholder="Địa chỉ">
+                                            <input type="text" class="form-control" name="address" placeholder="Địa chỉ">
                                         </div>
                                         <div class="form-holder">
                                             <span class="lnr lnr-lock"></span>
-                                            <input type="text" class="form-control" placeholder="Ngày sinh">
+                                            <input type="text" class="form-control" name="birthday" placeholder="Ngày sinh">
                                         </div>
                                         <div class="form-holder">
                                             <span class="lnr lnr-phone-handset"></span>
-                                            <select name="" id="" class="form-control" style="border: none">
+                                            <select name="Class" id="" class="form-control" style="border: none">
                                                 <option value="" disabled selected>Lớp</option>
                                                 <option value="1">Lớp 1</option>
                                                 <option value="2">Lớp 2</option>

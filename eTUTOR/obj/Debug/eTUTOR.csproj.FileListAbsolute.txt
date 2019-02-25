@@ -153,7 +153,6 @@ D:\HKI_Nam4\CAPSTONE-VERSION0.3\source\eTUITOR\eTUTOR\bin\Antlr3.Runtime.pdb
 D:\HKI_Nam4\CAPSTONE-VERSION0.3\source\eTUITOR\eTUTOR\bin\System.Diagnostics.DiagnosticSource.xml
 D:\HKI_Nam4\CAPSTONE-VERSION0.3\source\eTUITOR\eTUTOR\bin\Microsoft.AspNet.TelemetryCorrelation.xml
 D:\HKI_Nam4\CAPSTONE-VERSION0.3\source\eTUITOR\eTUTOR\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-D:\HKI_Nam4\CAPSTONE-VERSION0.3\source\eTUITOR\eTUTOR\obj\Debug\eTUTOR.csprojAssemblyReference.cache
 D:\HKI_Nam4\CAPSTONE-VERSION0.3\source\eTUITOR\eTUTOR\obj\Debug\eTUTOR.csproj.CoreCompileInputs.cache
 D:\HKI_Nam4\CAPSTONE-VERSION0.3\source\eTUITOR\eTUTOR\obj\Debug\eTUTOR.csproj.CopyComplete
 D:\HKI_Nam4\CAPSTONE-VERSION0.3\source\eTUITOR\eTUTOR\obj\Debug\eTUTOR.dll
@@ -162,3 +161,4 @@ D:\HKI_Nam4\CAPSTONE-VERSION0.3\source\eTUITOR\eTUTOR\bin\EntityFramework.dll
 D:\HKI_Nam4\CAPSTONE-VERSION0.3\source\eTUITOR\eTUTOR\bin\EntityFramework.SqlServer.dll
 D:\HKI_Nam4\CAPSTONE-VERSION0.3\source\eTUITOR\eTUTOR\bin\EntityFramework.xml
 D:\HKI_Nam4\CAPSTONE-VERSION0.3\source\eTUITOR\eTUTOR\bin\EntityFramework.SqlServer.xml
+D:\HKI_Nam4\CAPSTONE-VERSION0.3\source\eTUITOR\eTUTOR\obj\Debug\eTUTOR.csprojAssemblyReference.cache

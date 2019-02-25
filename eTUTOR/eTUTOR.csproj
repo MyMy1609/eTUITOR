@@ -201,6 +201,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\build\css\styleRegister.css" />
+    <Content Include="Content\build\fonts\Linearicons-Free.svg" />
     <Content Include="Content\img\teacher\default-avatar.png" />
     <Content Include="Content\vendor\bootstrap\css\avatar.css" />
     <Content Include="Content\vendor\bootstrap\css\demo.css" />
@@ -821,6 +823,10 @@
     <Content Include="Models\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
+    <Content Include="Content\build\fonts\Linearicons-Free.eot" />
+    <Content Include="Content\build\fonts\Linearicons-Free.ttf" />
+    <Content Include="Content\build\fonts\Linearicons-Free.woff" />
+    <Content Include="Content\build\fonts\Linearicons-Free.woff2" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -839,7 +845,9 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Views\Web.config" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -856,9 +864,11 @@
     <Content Include="Views\Tutor\RegisterTutor.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\Student\InfoOfStudent.cshtml" />
+    <Content Include="Views\User\ConfirmEmail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Notify\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
