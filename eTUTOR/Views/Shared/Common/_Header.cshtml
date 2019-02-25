@@ -22,32 +22,52 @@
         <div class="collapse navbar-collapse shift" id="navbarSupportedContent">
             <ul class="navbar-nav nav-dropdown nav-right ml-auto">
                 <li class="nav-item  active  p-2">
-                    <a class="nav-link link text-white " href="">
+                    <a class="nav-link link text-white " href="@Url.Action("index","Home")">
                         Trang chủ
                     </a>
                 </li>
                 <li class="nav-item  p-2">
-                    <a class="nav-link link text-white " href="../../../app/Component/AboutComponent/about.component.html">
+                    <a class="nav-link link text-white " href="@Url.Action("about","Home")">
                         Giới thiệu
                     </a>
                 </li>
                 <li class="nav-item dropdown  p-2">
-                    <a class="nav-link link  text-white " href="#">
+                    <a class="nav-link link  text-white " href="@Url.Action("listOfTutors","Tutor")">
                         Gia sư
                     </a>
 
                 </li>
                 <li class="nav-item p-2">
-                    <a class="nav-link link text-white " href="../../../app/Component/ContactComponent/contact.component.html">
+                    <a class="nav-link link text-white " href="@Url.Action("contact","Home")">
                         Liên hệ
                     </a>
                 </li>
-                <li class="nav-item p-2">
-                    <a href="../../../app/Component/RegisterComponent/register.component.html" class="btn register">Đăng kí</a>
-                </li>
-                <li class="nav-item p-2">
-                    <a href="../../../app/Component/LoginUserComponent/loginUser.component.html" class="btn login ">Đăng nhập</a>
-                </li>
+                @if (Session["UserID"] == null)
+                {
+                    <li class="nav-item p-2">
+                        <a href="@Url.Action("register","User")" class="btn register">Đăng kí</a>
+                    </li>
+                    <li class="nav-item p-2">
+                        <a href="@Url.Action("login","User")" class="btn login ">Đăng nhập</a>
+                    </li>
+                }
+                else
+                {
+
+                    <li class="nav-item dropdown" style="margin-right:50px;">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            @Session["FullName"]
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="nav-item p-2" href="#">Thông tin cá nhân</a>
+
+                            <div class="dropdown-divider"></div>
+                            <a class="nav-item p-2" href="/User/Logout/@Session["UserID"]">Đăng xuất</a>
+                        </div>
+                    </li>
+
+
+                }
                 <li class="nav-item p-2">
 
                 </li>

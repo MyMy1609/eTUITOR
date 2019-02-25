@@ -9,7 +9,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Đăng ký</title>
+    <title>Đăng nhập</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- LINEARICONS -->
@@ -24,26 +24,22 @@
     <div class="wrapper">
         <div class="inner">
             <div class="register-form flash hide">
-                <form action="">
+                <form action="/User/Login" method="post">
                     <img src="~/Content/img/register/registration-form-1.png" alt="" class="image-1">
                     <h3>Đăng nhập</h3>
                     <div class="default">
                         <div class="form-holder">
                             <span class="lnr lnr-user"></span>
-                            <input type="text" class="form-control" placeholder="Tên tài khoản">
+                            <input type="text" class="form-control" placeholder="Tên tài khoản" name="email">
                         </div>
                         <div class="form-holder">
                             <span class="lnr lnr-lock"></span>
-                            <input type="password" class="form-control" placeholder="Mật khẩu">
+                            <input type="password" class="form-control" placeholder="Mật khẩu" name="password">
                         </div>
-                        <div class="form-holder">
-                            <span class="lnr lnr-lock"></span>
-                            <input type="password" class="form-control" placeholder="Xác nhận mật khẩu">
-                        </div>
-                        <p style="padding-bottom: 10px">Nếu bạn chưa có tài khoản, nhấn chọn <a href="../../../app/Component/RegisterComponent/register.component.html">Đăng ký</a></p>
+                        <p style="padding-bottom: 10px">Nếu bạn chưa có tài khoản, nhấn chọn <a href="@Url.Action("register","User")">Đăng ký</a></p>
                         <a href="#" style="margin-left: 35%; margin-bottom: 20px">Quên mật khẩu ?</a>
                     </div>
-                    <button>
+                    <button type="submit">
                         <span>Đăng nhập</span>
                     </button>
                 </form>
