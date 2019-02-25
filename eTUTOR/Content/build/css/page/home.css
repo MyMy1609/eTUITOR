@@ -4949,8 +4949,9 @@ blockquote p {
 */
 .card {
   float: left;
-  min-height: 300px;
-  padding-bottom: 25%;
+  /*min-height: 300px;*/
+  /*padding-bottom: 25%;*/
+  padding:0 !important;
   position: relative;
   text-align: center;
   width: 100%;
