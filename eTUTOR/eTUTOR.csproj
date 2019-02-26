@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.Net.Compilers.2.10.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.2.10.0\build\Microsoft.Net.Compilers.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -8,7 +9,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{63F0802E-4D86-4BCA-A2ED-2E63C8D7E0B2}</ProjectGuid>
+    <ProjectGuid>{AC7AA8D6-8258-47E4-BEE5-9CA6673A83F3}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -45,15 +46,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -131,90 +130,81 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\ParentController.cs" />
+    <Compile Include="Models\about.cs">
+      <DependentUpon>eTUITORModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\admin.cs">
+      <DependentUpon>eTUITORModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Models\comment.cs">
+      <DependentUpon>eTUITORModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\common.cs">
+      <DependentUpon>eTUITORModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\contact.cs">
+      <DependentUpon>eTUITORModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Controllers\TutorController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Models\eTUITORModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>eTUITORModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\eTUITORModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>eTUITORModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\eTUITORModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>eTUITORModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\about.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\admin.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\comment.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\common.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\contact.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\history_lessons.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Model1.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Model1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Model1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.edmx</DependentUpon>
+      <DependentUpon>eTUITORModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\parent.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\schedule.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\session.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\status.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\student.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\submenu.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sysdiagram.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\tutor.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>eTUITORModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Models\schedule.cs">
+      <DependentUpon>eTUITORModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\session.cs">
+      <DependentUpon>eTUITORModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\status.cs">
+      <DependentUpon>eTUITORModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\student.cs">
+      <DependentUpon>eTUITORModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\submenu.cs">
+      <DependentUpon>eTUITORModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tutor.cs">
+      <DependentUpon>eTUITORModel.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\build\css\styleRegister.css" />
-    <Content Include="Content\build\fonts\Linearicons-Free.svg" />
-    <Content Include="Content\img\teacher\default-avatar.png" />
-    <Content Include="Content\vendor\bootstrap\css\avatar.css" />
-    <Content Include="Content\vendor\bootstrap\css\demo.css" />
-    <Content Include="Content\vendor\bootstrap\css\gsdk-bootstrap-wizard.css" />
-    <Content Include="Content\img\RegisterTutor\wizard_v6.jpg" />
-    <Content Include="Content\vendor\bootstrap\css\parent.css" />
-    <Content Include="Content\vendor\bootstrap\css\style.css" />
     <Content Include="Content\build\css\css-plugin-collections.css" />
     <Content Include="Content\build\css\flaticon.css" />
+    <Content Include="Content\build\css\InfoOfParent.css" />
     <Content Include="Content\build\css\page\home.css" />
     <Content Include="Content\build\css\pe-icon-7-stroke.css" />
     <Content Include="Content\build\css\style.css" />
+    <Content Include="Content\build\css\styleRegister.css" />
     <Content Include="Content\build\fonts\fa-brands-400.html" />
     <Content Include="Content\build\fonts\fa-brands-400.svg" />
     <Content Include="Content\build\fonts\fa-regular-400.html" />
@@ -226,208 +216,8 @@
     <Content Include="Content\build\fonts\Flaticond41d.html" />
     <Content Include="Content\build\fonts\fontawesome-webfont3295.svg" />
     <Content Include="Content\build\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\build\fonts\Linearicons-Free.svg" />
     <Content Include="Content\build\fonts\Pe-icon-7-strokebb1d.svg" />
-    <Content Include="Content\build\img\02.jpg" />
-    <Content Include="Content\build\img\03.jpg" />
-    <Content Include="Content\build\img\3.jpg" />
-    <Content Include="Content\build\img\4.jpg" />
-    <Content Include="Content\build\img\aboutus\1.jpg" />
-    <Content Include="Content\build\img\aboutus\1_Jj-Xzp0sIkUg23HOqzZF4w.png" />
-    <Content Include="Content\build\img\aboutus\2.jpg" />
-    <Content Include="Content\build\img\aboutus\3.jpg" />
-    <Content Include="Content\build\img\aboutus\4.png" />
-    <Content Include="Content\build\img\aboutus\5.jpg" />
-    <Content Include="Content\build\img\aboutus\6.jpg" />
-    <Content Include="Content\build\img\aboutus\a1.jpg" />
-    <Content Include="Content\build\img\aboutus\a2.jpg" />
-    <Content Include="Content\build\img\aboutus\a3.jpg" />
-    <Content Include="Content\build\img\aboutus\ab1.jpg" />
-    <Content Include="Content\build\img\aboutus\ab2.jpg" />
-    <Content Include="Content\build\img\aboutus\ab3.jpg" />
-    <Content Include="Content\build\img\aboutus\about1.jpg" />
-    <Content Include="Content\build\img\aboutus\about2.jpg" />
-    <Content Include="Content\build\img\aboutus\about3.jpg" />
-    <Content Include="Content\build\img\aboutus\about_1.jpg" />
-    <Content Include="Content\build\img\aboutus\about_2.jpg" />
-    <Content Include="Content\build\img\aboutus\about_3.jpg" />
-    <Content Include="Content\build\img\aboutus\about_31.jpg" />
-    <Content Include="Content\build\img\aboutus\about_4.jpg" />
-    <Content Include="Content\build\img\aboutus\about_5.jpg" />
-    <Content Include="Content\build\img\aboutus\about_6.jpg" />
-    <Content Include="Content\build\img\aboutus\Arrow_left.png" />
-    <Content Include="Content\build\img\aboutus\Arrow_right.png" />
-    <Content Include="Content\build\img\aboutus\bgBook.jpg" />
-    <Content Include="Content\build\img\aboutus\bgGray.png" />
-    <Content Include="Content\build\img\aboutus\bgGray1.png" />
-    <Content Include="Content\build\img\aboutus\bgGray2.png" />
-    <Content Include="Content\build\img\aboutus\bgGray3.png" />
-    <Content Include="Content\build\img\aboutus\book.jpg" />
-    <Content Include="Content\build\img\aboutus\brower.jpg" />
-    <Content Include="Content\build\img\aboutus\code-watermark.svg" />
-    <Content Include="Content\build\img\aboutus\cycber.jpg" />
-    <Content Include="Content\build\img\aboutus\dc2.png" />
-    <Content Include="Content\build\img\aboutus\duongduong.png" />
-    <Content Include="Content\build\img\aboutus\facebook.png" />
-    <Content Include="Content\build\img\aboutus\girl.PNG" />
-    <Content Include="Content\build\img\aboutus\icon-letter-mail-md.png" />
-    <Content Include="Content\build\img\aboutus\ji-chang-wook.jpg" />
-    <Content Include="Content\build\img\aboutus\joinsung.jpg" />
-    <Content Include="Content\build\img\aboutus\LeeSeungGi2.jpg" />
-    <Content Include="Content\build\img\aboutus\lhs-arrow.svg" />
-    <Content Include="Content\build\img\aboutus\loiIch.jpg" />
-    <Content Include="Content\build\img\aboutus\mail.png" />
-    <Content Include="Content\build\img\aboutus\money.jpg" />
-    <Content Include="Content\build\img\aboutus\online.jpg" />
-    <Content Include="Content\build\img\aboutus\ourEducation.jpg" />
-    <Content Include="Content\build\img\aboutus\ourStory.jpg" />
-    <Content Include="Content\build\img\aboutus\ourValue.jpg" />
-    <Content Include="Content\build\img\aboutus\profile1.jpg" />
-    <Content Include="Content\build\img\aboutus\slider-selected.svg" />
-    <Content Include="Content\build\img\aboutus\slider-unselected.svg" />
-    <Content Include="Content\build\img\aboutus\sohammondal.jpg" />
-    <Content Include="Content\build\img\aboutus\ss1.jpg" />
-    <Content Include="Content\build\img\aboutus\ss2.jpg" />
-    <Content Include="Content\build\img\aboutus\ss3.jpg" />
-    <Content Include="Content\build\img\aboutus\t-1.jpg" />
-    <Content Include="Content\build\img\aboutus\t-2.jpg" />
-    <Content Include="Content\build\img\aboutus\t-3.jpg" />
-    <Content Include="Content\build\img\aboutus\teacher1.jpg" />
-    <Content Include="Content\build\img\aboutus\teacher2.jpg" />
-    <Content Include="Content\build\img\aboutus\teacher3.jpg" />
-    <Content Include="Content\build\img\aboutus\teacher4.jpg" />
-    <Content Include="Content\build\img\aboutus\teacher5.jpg" />
-    <Content Include="Content\build\img\aboutus\teacher6.jpg" />
-    <Content Include="Content\build\img\aboutus\teacher_1.jpg" />
-    <Content Include="Content\build\img\admin\avatar-0.jpg" />
-    <Content Include="Content\build\img\admin\avatar-1.jpg" />
-    <Content Include="Content\build\img\admin\avatar-2.jpg" />
-    <Content Include="Content\build\img\admin\avatar-3.jpg" />
-    <Content Include="Content\build\img\avatar\1.jpg" />
-    <Content Include="Content\build\img\background1.jpg" />
-    <Content Include="Content\build\img\background6.jpg" />
-    <Content Include="Content\build\img\banner\brt-1.jpg" />
-    <Content Include="Content\build\img\banner\bt.png" />
-    <Content Include="Content\build\img\banner\cf-1.png" />
-    <Content Include="Content\build\img\banner\contact-b.jpg" />
-    <Content Include="Content\build\img\banner\fq-1.jpg" />
-    <Content Include="Content\build\img\banner\hb-2.jpg" />
-    <Content Include="Content\build\img\banner\p-1.jpg" />
-    <Content Include="Content\build\img\banner\p-2.jpg" />
-    <Content Include="Content\build\img\banner\pb.jpg" />
-    <Content Include="Content\build\img\banner\s-1.jpg" />
-    <Content Include="Content\build\img\banner\s-3.jpg" />
-    <Content Include="Content\build\img\banner\s-4.jpg" />
-    <Content Include="Content\build\img\banner\sd-1.jpg" />
-    <Content Include="Content\build\img\banner\teacher-b.jpg" />
-    <Content Include="Content\build\img\banner\tesit-b-1.jpg" />
-    <Content Include="Content\build\img\banner\v-1.jpg" />
-    <Content Include="Content\build\img\banner\wc-1.jpg" />
-    <Content Include="Content\build\img\banner\wc-2.png" />
-    <Content Include="Content\build\img\bg_1.jpg" />
-    <Content Include="Content\build\img\bg_pa.png" />
-    <Content Include="Content\build\img\chung_chi\cc_1.jpg" />
-    <Content Include="Content\build\img\chung_chi\cc_2.jpg" />
-    <Content Include="Content\build\img\chung_chi\cc_3.jpg" />
-    <Content Include="Content\build\img\chung_chi\cc_4.jpg" />
-    <Content Include="Content\build\img\contact\bg-01.jpg" />
-    <Content Include="Content\build\img\contact\contact-background.png" />
-    <Content Include="Content\build\img\contact\Contact-Us-Background.jpg" />
-    <Content Include="Content\build\img\contact\icons\favicon.ico" />
-    <Content Include="Content\build\img\contact\img-1.jpg" />
-    <Content Include="Content\build\img\event\1.jpg" />
-    <Content Include="Content\build\img\event\2.jpg" />
-    <Content Include="Content\build\img\event\3.jpg" />
-    <Content Include="Content\build\img\explore\1.png" />
-    <Content Include="Content\build\img\explore\2.png" />
-    <Content Include="Content\build\img\explore\3.png" />
-    <Content Include="Content\build\img\explore\4.png" />
-    <Content Include="Content\build\img\explore\5.png" />
-    <Content Include="Content\build\img\explore\6.png" />
-    <Content Include="Content\build\img\explore\7.png" />
-    <Content Include="Content\build\img\explore\8.png" />
-    <Content Include="Content\build\img\explore\bg_p.jpg" />
-    <Content Include="Content\build\img\explore\hover-bg.png" />
-    <Content Include="Content\build\img\face3.jpg" />
-    <Content Include="Content\build\img\face6.jpg" />
-    <Content Include="Content\build\img\faqs-cloud.png" />
-    <Content Include="Content\build\img\flaticon-png\small\2.png" />
-    <Content Include="Content\build\img\flaticon-png\small\3.png" />
-    <Content Include="Content\build\img\flaticon-png\small\4.png" />
-    <Content Include="Content\build\img\flaticon-png\small\5.png" />
-    <Content Include="Content\build\img\flaticon-png\small\6.png" />
-    <Content Include="Content\build\img\flaticon-png\small\7.png" />
-    <Content Include="Content\build\img\flaticon-png\small\desktop.png" />
-    <Content Include="Content\build\img\flaticon-png\small\graduates.png" />
-    <Content Include="Content\build\img\flaticon-png\small\lecture.png" />
-    <Content Include="Content\build\img\flaticon-png\small\library.png" />
-    <Content Include="Content\build\img\homepage-devices.jpg" />
-    <Content Include="Content\build\img\icon\DE.png" />
-    <Content Include="Content\build\img\icon\FR.png" />
-    <Content Include="Content\build\img\icon\GB.png" />
-    <Content Include="Content\build\img\icon\icon_1.png" />
-    <Content Include="Content\build\img\icon\icon_2.png" />
-    <Content Include="Content\build\img\icon\icon_3.png" />
-    <Content Include="Content\build\img\img.png" />
-    <Content Include="Content\build\img\lightbox\close.png" />
-    <Content Include="Content\build\img\lightbox\loading.gif" />
-    <Content Include="Content\build\img\lightbox\next.png" />
-    <Content Include="Content\build\img\lightbox\prev.png" />
-    <Content Include="Content\build\img\login_admin\1.jpg" />
-    <Content Include="Content\build\img\login_admin\2.jpg" />
-    <Content Include="Content\build\img\partnership\bg_p.jpg" />
-    <Content Include="Content\build\img\partnership\bg_pa.png" />
-    <Content Include="Content\build\img\partnership\p-1.png" />
-    <Content Include="Content\build\img\partnership\p-4.png" />
-    <Content Include="Content\build\img\partnership\p2.png" />
-    <Content Include="Content\build\img\partnership\p3.png" />
-    <Content Include="Content\build\img\partnership\p5.png" />
-    <Content Include="Content\build\img\partnership\p6.png" />
-    <Content Include="Content\build\img\pattern\p6.png" />
-    <Content Include="Content\build\img\photos\1.jpg" />
-    <Content Include="Content\build\img\photos\2.png" />
-    <Content Include="Content\build\img\photos\iphone.html" />
-    <Content Include="Content\build\img\play.png" />
-    <Content Include="Content\build\img\recent-work\1.jpg" />
-    <Content Include="Content\build\img\recent-work\2.jpg" />
-    <Content Include="Content\build\img\recent-work\3.jpg" />
-    <Content Include="Content\build\img\recent-work\4.jpg" />
-    <Content Include="Content\build\img\recent-work\5.jpg" />
-    <Content Include="Content\build\img\recent-work\6.jpg" />
-    <Content Include="Content\build\img\recent-work\7.jpg" />
-    <Content Include="Content\build\img\recent-work\8.jpg" />
-    <Content Include="Content\build\img\recent-work\9.jpg" />
-    <Content Include="Content\build\img\register\bg-registration-form-1.jpg" />
-    <Content Include="Content\build\img\register\registration-form-1.png" />
-    <Content Include="Content\build\img\slider\bg2.jpg" />
-    <Content Include="Content\build\img\slider\bg3.jpg" />
-    <Content Include="Content\build\img\slider\bg4.jpg" />
-    <Content Include="Content\build\img\svg-icons\chat1.svg" />
-    <Content Include="Content\build\img\svg-icons\devices.svg" />
-    <Content Include="Content\build\img\svg-icons\dial.svg" />
-    <Content Include="Content\build\img\svg-icons\fingerprint.svg" />
-    <Content Include="Content\build\img\svg-icons\payment-method.svg" />
-    <Content Include="Content\build\img\svg-icons\tap.svg" />
-    <Content Include="Content\build\img\teacher\1.png" />
-    <Content Include="Content\build\img\teacher\2.png" />
-    <Content Include="Content\build\img\teacher\3.png" />
-    <Content Include="Content\build\img\teacher\dc1.png" />
-    <Content Include="Content\build\img\teacher\sm-1.jpg" />
-    <Content Include="Content\build\img\teacher\sm-2.jpg" />
-    <Content Include="Content\build\img\teacher\sm-3.jpg" />
-    <Content Include="Content\build\img\teacher\sm-4.jpg" />
-    <Content Include="Content\build\img\teacher\sm-5.jpg" />
-    <Content Include="Content\build\img\teacher\t-1.jpg" />
-    <Content Include="Content\build\img\teacher\t-2.jpg" />
-    <Content Include="Content\build\img\teacher\t-3.jpg" />
-    <Content Include="Content\build\img\teacher\team-details.jpg" />
-    <Content Include="Content\build\img\teacher\team5.jpg" />
-    <Content Include="Content\build\img\teacher\team6.jpg" />
-    <Content Include="Content\build\img\teacher\team7.jpg" />
-    <Content Include="Content\build\img\teacher\team8.jpg" />
-    <Content Include="Content\build\img\testimonials\1.jpg" />
-    <Content Include="Content\build\img\testimonials\2.jpg" />
-    <Content Include="Content\build\img\testimonials\3.jpg" />
-    <Content Include="Content\build\img\tick.png" />
     <Content Include="Content\build\js\page\home.js" />
     <Content Include="Content\img\02.jpg" />
     <Content Include="Content\img\03.jpg" />
@@ -598,6 +388,7 @@
     <Content Include="Content\img\recent-work\7.jpg" />
     <Content Include="Content\img\recent-work\8.jpg" />
     <Content Include="Content\img\recent-work\9.jpg" />
+    <Content Include="Content\img\RegisterTutor\wizard_v6.jpg" />
     <Content Include="Content\img\register\bg-registration-form-1.jpg" />
     <Content Include="Content\img\register\registration-form-1.png" />
     <Content Include="Content\img\slider\bg2.jpg" />
@@ -613,6 +404,7 @@
     <Content Include="Content\img\teacher\2.png" />
     <Content Include="Content\img\teacher\3.png" />
     <Content Include="Content\img\teacher\dc1.png" />
+    <Content Include="Content\img\teacher\default-avatar.png" />
     <Content Include="Content\img\teacher\sm-1.jpg" />
     <Content Include="Content\img\teacher\sm-2.jpg" />
     <Content Include="Content\img\teacher\sm-3.jpg" />
@@ -630,18 +422,265 @@
     <Content Include="Content\img\testimonials\2.jpg" />
     <Content Include="Content\img\testimonials\3.jpg" />
     <Content Include="Content\img\tick.png" />
-    <Content Include="Content\vendor\bootstrap\css\contact.component.css" />
+    <Content Include="Content\vendor\bootstrap-datepicker\.gitignore" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\css\bootstrap-datepicker.css" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\css\bootstrap-datepicker.min.css" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\css\bootstrap-datepicker.standalone.css" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\css\bootstrap-datepicker.standalone.min.css" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\css\bootstrap-datepicker3.css" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\css\bootstrap-datepicker3.min.css" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\css\bootstrap-datepicker3.standalone.css" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\css\bootstrap-datepicker3.standalone.min.css" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\js\bootstrap-datepicker.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\js\bootstrap-datepicker.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\locales\bootstrap-datepicker-en-CA.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\locales\bootstrap-datepicker.ar-tn.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\locales\bootstrap-datepicker.ar.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\locales\bootstrap-datepicker.az.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\locales\bootstrap-datepicker.bg.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\locales\bootstrap-datepicker.bn.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\locales\bootstrap-datepicker.br.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\locales\bootstrap-datepicker.bs.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\locales\bootstrap-datepicker.ca.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\locales\bootstrap-datepicker.cs.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\locales\bootstrap-datepicker.cy.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\locales\bootstrap-datepicker.da.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\locales\bootstrap-datepicker.de.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\locales\bootstrap-datepicker.el.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\locales\bootstrap-datepicker.en-AU.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\locales\bootstrap-datepicker.en-CA.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\locales\bootstrap-datepicker.en-GB.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\locales\bootstrap-datepicker.en-IE.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\locales\bootstrap-datepicker.en-NZ.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\locales\bootstrap-datepicker.en-ZA.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\locales\bootstrap-datepicker.eo.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\locales\bootstrap-datepicker.es.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\locales\bootstrap-datepicker.et.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\locales\bootstrap-datepicker.eu.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\locales\bootstrap-datepicker.fa.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\locales\bootstrap-datepicker.fi.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\locales\bootstrap-datepicker.fo.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\locales\bootstrap-datepicker.fr-CH.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\locales\bootstrap-datepicker.fr.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\locales\bootstrap-datepicker.gl.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\locales\bootstrap-datepicker.he.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\locales\bootstrap-datepicker.hi.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\locales\bootstrap-datepicker.hr.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\locales\bootstrap-datepicker.hu.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\locales\bootstrap-datepicker.hy.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\locales\bootstrap-datepicker.id.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\locales\bootstrap-datepicker.is.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\locales\bootstrap-datepicker.it-CH.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\locales\bootstrap-datepicker.it.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\locales\bootstrap-datepicker.ja.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\locales\bootstrap-datepicker.ka.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\locales\bootstrap-datepicker.kh.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\locales\bootstrap-datepicker.kk.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\locales\bootstrap-datepicker.km.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\locales\bootstrap-datepicker.ko.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\locales\bootstrap-datepicker.kr.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\locales\bootstrap-datepicker.lt.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\locales\bootstrap-datepicker.lv.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\locales\bootstrap-datepicker.me.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\locales\bootstrap-datepicker.mk.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\locales\bootstrap-datepicker.mn.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\locales\bootstrap-datepicker.ms.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\locales\bootstrap-datepicker.nl-BE.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\locales\bootstrap-datepicker.nl.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\locales\bootstrap-datepicker.no.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\locales\bootstrap-datepicker.oc.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\locales\bootstrap-datepicker.pl.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\locales\bootstrap-datepicker.pt-BR.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\locales\bootstrap-datepicker.pt.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\locales\bootstrap-datepicker.ro.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\locales\bootstrap-datepicker.rs-latin.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\locales\bootstrap-datepicker.rs.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\locales\bootstrap-datepicker.ru.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\locales\bootstrap-datepicker.si.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\locales\bootstrap-datepicker.sk.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\locales\bootstrap-datepicker.sl.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\locales\bootstrap-datepicker.sq.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\locales\bootstrap-datepicker.sr-latin.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\locales\bootstrap-datepicker.sr.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\locales\bootstrap-datepicker.sv.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\locales\bootstrap-datepicker.sw.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\locales\bootstrap-datepicker.ta.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\locales\bootstrap-datepicker.tg.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\locales\bootstrap-datepicker.th.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\locales\bootstrap-datepicker.tk.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\locales\bootstrap-datepicker.tr.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\locales\bootstrap-datepicker.uk.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\locales\bootstrap-datepicker.uz-cyrl.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\locales\bootstrap-datepicker.uz-latn.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\locales\bootstrap-datepicker.vi.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\locales\bootstrap-datepicker.zh-CN.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\locales\bootstrap-datepicker.zh-TW.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\docs\requirements.txt" />
+    <Content Include="Content\vendor\bootstrap-datepicker\docs\_screenshots\demo_head.html" />
+    <Content Include="Content\vendor\bootstrap-datepicker\docs\_screenshots\markup_component.html" />
+    <Content Include="Content\vendor\bootstrap-datepicker\docs\_screenshots\markup_daterange.html" />
+    <Content Include="Content\vendor\bootstrap-datepicker\docs\_screenshots\markup_inline.html" />
+    <Content Include="Content\vendor\bootstrap-datepicker\docs\_screenshots\markup_input.html" />
+    <Content Include="Content\vendor\bootstrap-datepicker\docs\_screenshots\option_calendarweeks.html" />
+    <Content Include="Content\vendor\bootstrap-datepicker\docs\_screenshots\option_clearbtn.html" />
+    <Content Include="Content\vendor\bootstrap-datepicker\docs\_screenshots\option_daysofweekdisabled.html" />
+    <Content Include="Content\vendor\bootstrap-datepicker\docs\_screenshots\option_enddate.html" />
+    <Content Include="Content\vendor\bootstrap-datepicker\docs\_screenshots\option_language.html" />
+    <Content Include="Content\vendor\bootstrap-datepicker\docs\_screenshots\option_multidate.html" />
+    <Content Include="Content\vendor\bootstrap-datepicker\docs\_screenshots\option_showweekdays.html" />
+    <Content Include="Content\vendor\bootstrap-datepicker\docs\_screenshots\option_startdate.html" />
+    <Content Include="Content\vendor\bootstrap-datepicker\docs\_screenshots\option_todaybtn.html" />
+    <Content Include="Content\vendor\bootstrap-datepicker\docs\_screenshots\option_todayhighlight.html" />
+    <Content Include="Content\vendor\bootstrap-datepicker\docs\_screenshots\option_weekstart.html" />
+    <Content Include="Content\vendor\bootstrap-datepicker\docs\_screenshots\script\common.css" />
+    <Content Include="Content\vendor\bootstrap-datepicker\docs\_screenshots\script\common.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\docs\_screenshots\script\debug.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\docs\_screenshots\script\html-imports.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\docs\_screenshots\script\screenshot.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\docs\_static\screenshots\demo_head.png" />
+    <Content Include="Content\vendor\bootstrap-datepicker\docs\_static\screenshots\markup_component.png" />
+    <Content Include="Content\vendor\bootstrap-datepicker\docs\_static\screenshots\markup_daterange.png" />
+    <Content Include="Content\vendor\bootstrap-datepicker\docs\_static\screenshots\markup_inline.png" />
+    <Content Include="Content\vendor\bootstrap-datepicker\docs\_static\screenshots\markup_input.png" />
+    <Content Include="Content\vendor\bootstrap-datepicker\docs\_static\screenshots\option_calendarweeks.png" />
+    <Content Include="Content\vendor\bootstrap-datepicker\docs\_static\screenshots\option_clearbtn.png" />
+    <Content Include="Content\vendor\bootstrap-datepicker\docs\_static\screenshots\option_daysofweekdisabled.png" />
+    <Content Include="Content\vendor\bootstrap-datepicker\docs\_static\screenshots\option_enddate.png" />
+    <Content Include="Content\vendor\bootstrap-datepicker\docs\_static\screenshots\option_language.png" />
+    <Content Include="Content\vendor\bootstrap-datepicker\docs\_static\screenshots\option_multidate.png" />
+    <Content Include="Content\vendor\bootstrap-datepicker\docs\_static\screenshots\option_showweekdays.png" />
+    <Content Include="Content\vendor\bootstrap-datepicker\docs\_static\screenshots\option_startdate.png" />
+    <Content Include="Content\vendor\bootstrap-datepicker\docs\_static\screenshots\option_todaybtn.png" />
+    <Content Include="Content\vendor\bootstrap-datepicker\docs\_static\screenshots\option_todayhighlight.png" />
+    <Content Include="Content\vendor\bootstrap-datepicker\docs\_static\screenshots\option_weekstart.png" />
+    <Content Include="Content\vendor\bootstrap-datepicker\Gruntfile.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\bootstrap-datepicker.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\locales\bootstrap-datepicker-en-CA.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\locales\bootstrap-datepicker.ar-tn.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\locales\bootstrap-datepicker.ar.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\locales\bootstrap-datepicker.az.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\locales\bootstrap-datepicker.bg.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\locales\bootstrap-datepicker.bn.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\locales\bootstrap-datepicker.br.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\locales\bootstrap-datepicker.bs.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\locales\bootstrap-datepicker.ca.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\locales\bootstrap-datepicker.cs.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\locales\bootstrap-datepicker.cy.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\locales\bootstrap-datepicker.da.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\locales\bootstrap-datepicker.de.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\locales\bootstrap-datepicker.el.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\locales\bootstrap-datepicker.en-AU.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\locales\bootstrap-datepicker.en-CA.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\locales\bootstrap-datepicker.en-GB.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\locales\bootstrap-datepicker.en-IE.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\locales\bootstrap-datepicker.en-NZ.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\locales\bootstrap-datepicker.en-ZA.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\locales\bootstrap-datepicker.eo.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\locales\bootstrap-datepicker.es.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\locales\bootstrap-datepicker.et.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\locales\bootstrap-datepicker.eu.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\locales\bootstrap-datepicker.fa.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\locales\bootstrap-datepicker.fi.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\locales\bootstrap-datepicker.fo.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\locales\bootstrap-datepicker.fr-CH.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\locales\bootstrap-datepicker.fr.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\locales\bootstrap-datepicker.gl.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\locales\bootstrap-datepicker.he.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\locales\bootstrap-datepicker.hi.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\locales\bootstrap-datepicker.hr.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\locales\bootstrap-datepicker.hu.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\locales\bootstrap-datepicker.hy.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\locales\bootstrap-datepicker.id.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\locales\bootstrap-datepicker.is.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\locales\bootstrap-datepicker.it-CH.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\locales\bootstrap-datepicker.it.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\locales\bootstrap-datepicker.ja.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\locales\bootstrap-datepicker.ka.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\locales\bootstrap-datepicker.kh.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\locales\bootstrap-datepicker.kk.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\locales\bootstrap-datepicker.km.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\locales\bootstrap-datepicker.ko.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\locales\bootstrap-datepicker.kr.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\locales\bootstrap-datepicker.lt.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\locales\bootstrap-datepicker.lv.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\locales\bootstrap-datepicker.me.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\locales\bootstrap-datepicker.mk.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\locales\bootstrap-datepicker.mn.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\locales\bootstrap-datepicker.ms.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\locales\bootstrap-datepicker.nl-BE.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\locales\bootstrap-datepicker.nl.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\locales\bootstrap-datepicker.no.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\locales\bootstrap-datepicker.oc.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\locales\bootstrap-datepicker.pl.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\locales\bootstrap-datepicker.pt-BR.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\locales\bootstrap-datepicker.pt.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\locales\bootstrap-datepicker.ro.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\locales\bootstrap-datepicker.rs-latin.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\locales\bootstrap-datepicker.rs.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\locales\bootstrap-datepicker.ru.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\locales\bootstrap-datepicker.si.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\locales\bootstrap-datepicker.sk.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\locales\bootstrap-datepicker.sl.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\locales\bootstrap-datepicker.sq.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\locales\bootstrap-datepicker.sr-latin.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\locales\bootstrap-datepicker.sr.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\locales\bootstrap-datepicker.sv.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\locales\bootstrap-datepicker.sw.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\locales\bootstrap-datepicker.ta.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\locales\bootstrap-datepicker.tg.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\locales\bootstrap-datepicker.th.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\locales\bootstrap-datepicker.tk.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\locales\bootstrap-datepicker.tr.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\locales\bootstrap-datepicker.uk.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\locales\bootstrap-datepicker.uz-cyrl.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\locales\bootstrap-datepicker.uz-latn.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\locales\bootstrap-datepicker.vi.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\locales\bootstrap-datepicker.zh-CN.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\locales\bootstrap-datepicker.zh-TW.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\tests\assets\coverage.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\tests\assets\jquery-1.7.1.min.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\tests\assets\mock.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\tests\assets\qunit-logging.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\tests\assets\qunit.css" />
+    <Content Include="Content\vendor\bootstrap-datepicker\tests\assets\qunit.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\tests\assets\utils.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\tests\suites\calendar-weeks.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\tests\suites\component.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\tests\suites\data-api.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\tests\suites\events.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\tests\suites\formats.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\tests\suites\inline.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\tests\suites\keyboard_navigation\2011.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\tests\suites\keyboard_navigation\2012.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\tests\suites\keyboard_navigation\all.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\tests\suites\methods.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\tests\suites\methods_jquery.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\tests\suites\mouse_navigation\2011.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\tests\suites\mouse_navigation\2012.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\tests\suites\mouse_navigation\all.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\tests\suites\noconflict.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\tests\suites\options.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\tests\suites\timezone.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\tests\suites\touch_navigation\all.js" />
+    <Content Include="Content\vendor\bootstrap-datepicker\tests\tests.html" />
+    <Content Include="Content\vendor\bootstrap-datepicker\tests\timezone.html" />
     <Content Include="Content\vendor\bootstrap\css\about.component.css" />
+    <Content Include="Content\vendor\bootstrap\css\avatar.css" />
     <Content Include="Content\vendor\bootstrap\css\bootstrap-grid.css" />
     <Content Include="Content\vendor\bootstrap\css\bootstrap-grid.min.css" />
     <Content Include="Content\vendor\bootstrap\css\bootstrap-reboot.css" />
     <Content Include="Content\vendor\bootstrap\css\bootstrap-reboot.min.css" />
     <Content Include="Content\vendor\bootstrap\css\bootstrap.css" />
     <Content Include="Content\vendor\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Content\vendor\bootstrap\css\contact.component.css" />
+    <Content Include="Content\vendor\bootstrap\css\demo.css" />
+    <Content Include="Content\vendor\bootstrap\css\gsdk-bootstrap-wizard.css" />
     <Content Include="Content\vendor\bootstrap\css\jquery-ui.min.css" />
     <Content Include="Content\vendor\bootstrap\css\listoftutor.component.css" />
     <Content Include="Content\vendor\bootstrap\css\opensans-font.css" />
+    <Content Include="Content\vendor\bootstrap\css\parent.css" />
     <Content Include="Content\vendor\bootstrap\css\register.component.css" />
+    <Content Include="Content\vendor\bootstrap\css\style.css" />
     <Content Include="Content\vendor\bootstrap\css\TutorHomePage.component.css" />
     <Content Include="Content\vendor\bootstrap\js\bootstrap.bundle.js" />
     <Content Include="Content\vendor\bootstrap\js\bootstrap.bundle.min.js" />
@@ -654,8 +693,8 @@
     <Content Include="Content\vendor\font-awesome\css\font-awesome.css" />
     <Content Include="Content\vendor\font-awesome\css\font-awesome.min.css" />
     <Content Include="Content\vendor\font-awesome\fonts\fontawesome-webfont.svg" />
-    <Content Include="Content\vendor\font-awesome\HELP-US-OUT.txt" />
     <Content Include="Content\vendor\font-awesome\fonts\material-design-iconic-font.min.css" />
+    <Content Include="Content\vendor\font-awesome\HELP-US-OUT.txt" />
     <Content Include="Content\vendor\jquery\gsdk-bootstrap-wizard.js" />
     <Content Include="Content\vendor\jquery\jquery-2.2.4.min.js" />
     <Content Include="Content\vendor\jquery\jquery-plugin-collection.js" />
@@ -687,33 +726,54 @@
     <Content Include="Content\vendor\slider\revolution-slider\js\extensions\revolution.extension.video.min.js" />
     <Content Include="Content\vendor\slider\revolution-slider\js\jquery.themepunch.revolution.min.js" />
     <Content Include="Content\vendor\slider\revolution-slider\js\jquery.themepunch.tools.min.js" />
-    <Content Include="demo.css" />
+    <Content Include="Models\eTUITORModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>eTUITORModel.Context.cs</LastGenOutput>
+      <DependentUpon>eTUITORModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\eTUITORModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>eTUITORModel.edmx</DependentUpon>
+      <LastGenOutput>eTUITORModel.cs</LastGenOutput>
+    </Content>
     <Content Include="favicon.ico" />
-    <Content Include="fonts\fa-brands-400.html" />
-    <Content Include="fonts\fa-brands-400.svg" />
-    <Content Include="fonts\fa-regular-400.html" />
-    <Content Include="fonts\fa-regular-400.svg" />
-    <Content Include="fonts\fa-solid-900.html" />
-    <Content Include="fonts\fa-solid-900.svg" />
-    <Content Include="fonts\Flaticon.html" />
-    <Content Include="fonts\Flaticon.svg" />
-    <Content Include="fonts\Flaticond41d.html" />
-    <Content Include="fonts\fontawesome-webfont3295.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="fonts\Pe-icon-7-strokebb1d.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Models\Model1.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Model1.Context.cs</LastGenOutput>
-      <DependentUpon>Model1.edmx</DependentUpon>
-    </Content>
-    <Content Include="Models\Model1.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.cs</LastGenOutput>
-    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\build\fonts\fa-brands-400.eot" />
+    <Content Include="Content\build\fonts\fa-brands-400.ttf" />
+    <Content Include="Content\build\fonts\fa-brands-400.woff" />
+    <Content Include="Content\build\fonts\fa-brands-400d41d.eot" />
+    <Content Include="Content\build\fonts\fa-regular-400.eot" />
+    <Content Include="Content\build\fonts\fa-regular-400.ttf" />
+    <Content Include="Content\build\fonts\fa-regular-400.woff" />
+    <Content Include="Content\build\fonts\fa-regular-400d41d.eot" />
+    <Content Include="Content\build\fonts\fa-solid-900.eot" />
+    <Content Include="Content\build\fonts\fa-solid-900.ttf" />
+    <Content Include="Content\build\fonts\fa-solid-900.woff" />
+    <Content Include="Content\build\fonts\fa-solid-900d41d.eot" />
+    <Content Include="Content\build\fonts\Flaticon.ttf" />
+    <Content Include="Content\build\fonts\Flaticon.woff" />
+    <Content Include="Content\build\fonts\fontawesome-webfont3295.eot" />
+    <Content Include="Content\build\fonts\fontawesome-webfont3295.ttf" />
+    <Content Include="Content\build\fonts\fontawesome-webfont3295.woff" />
+    <Content Include="Content\build\fonts\fontawesome-webfont3295.woff2" />
+    <Content Include="Content\build\fonts\fontawesome-webfontd41d.eot" />
+    <Content Include="Content\build\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\build\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\build\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\build\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\build\fonts\glyphicons-halflings-regulard41d.eot" />
+    <Content Include="Content\build\fonts\Linearicons-Free.eot" />
+    <Content Include="Content\build\fonts\Linearicons-Free.ttf" />
+    <Content Include="Content\build\fonts\Linearicons-Free.woff" />
+    <Content Include="Content\build\fonts\Linearicons-Free.woff2" />
+    <Content Include="Content\build\fonts\Pe-icon-7-strokebb1d.eot" />
+    <Content Include="Content\build\fonts\Pe-icon-7-strokebb1d.ttf" />
+    <Content Include="Content\build\fonts\Pe-icon-7-strokebb1d.woff" />
+    <Content Include="Content\build\fonts\Pe-icon-7-stroked41d.eot" />
+    <Content Include="Content\build\fonts\Stroke-Gap-Icons.eot" />
     <Content Include="Content\vendor\bootstrap\css\.DS_Store" />
     <Content Include="Content\vendor\bootstrap\css\bootstrap-grid.css.map" />
     <Content Include="Content\vendor\bootstrap\css\bootstrap-grid.min.css.map" />
@@ -758,75 +818,56 @@
     <Content Include="Content\vendor\font-awesome\scss\_screen-reader.scss" />
     <Content Include="Content\vendor\font-awesome\scss\_stacked.scss" />
     <Content Include="Content\vendor\font-awesome\scss\_variables.scss" />
-    <Content Include="Content\build\fonts\fa-brands-400.eot" />
-    <Content Include="Content\build\fonts\fa-brands-400.ttf" />
-    <Content Include="Content\build\fonts\fa-brands-400.woff" />
-    <Content Include="Content\build\fonts\fa-brands-400d41d.eot" />
-    <Content Include="Content\build\fonts\fa-regular-400.eot" />
-    <Content Include="Content\build\fonts\fa-regular-400.ttf" />
-    <Content Include="Content\build\fonts\fa-regular-400.woff" />
-    <Content Include="Content\build\fonts\fa-regular-400d41d.eot" />
-    <Content Include="Content\build\fonts\fa-solid-900.eot" />
-    <Content Include="Content\build\fonts\fa-solid-900.ttf" />
-    <Content Include="Content\build\fonts\fa-solid-900.woff" />
-    <Content Include="Content\build\fonts\fa-solid-900d41d.eot" />
-    <Content Include="Content\build\fonts\Flaticon.ttf" />
-    <Content Include="Content\build\fonts\Flaticon.woff" />
-    <Content Include="Content\build\fonts\fontawesome-webfont3295.eot" />
-    <Content Include="Content\build\fonts\fontawesome-webfont3295.ttf" />
-    <Content Include="Content\build\fonts\fontawesome-webfont3295.woff" />
-    <Content Include="Content\build\fonts\fontawesome-webfont3295.woff2" />
-    <Content Include="Content\build\fonts\fontawesome-webfontd41d.eot" />
-    <Content Include="Content\build\fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\build\fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="Content\build\fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="Content\build\fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="Content\build\fonts\glyphicons-halflings-regulard41d.eot" />
-    <Content Include="Content\build\fonts\Pe-icon-7-strokebb1d.eot" />
-    <Content Include="Content\build\fonts\Pe-icon-7-strokebb1d.ttf" />
-    <Content Include="Content\build\fonts\Pe-icon-7-strokebb1d.woff" />
-    <Content Include="Content\build\fonts\Pe-icon-7-stroked41d.eot" />
-    <Content Include="Content\build\fonts\Stroke-Gap-Icons.eot" />
     <Content Include="Content\vendor\slider\Flaticon.woff" />
     <Content Include="Content\vendor\slider\revolution-slider\fonts\revicons\revicons90c6.eot" />
     <Content Include="Content\vendor\slider\revolution-slider\fonts\revicons\revicons90c6.ttf" />
     <Content Include="Content\vendor\slider\revolution-slider\fonts\revicons\revicons90c6.woff" />
-    <Content Include="fonts\fa-brands-400.eot" />
-    <Content Include="fonts\fa-brands-400.ttf" />
-    <Content Include="fonts\fa-brands-400.woff" />
-    <Content Include="fonts\fa-brands-400d41d.eot" />
-    <Content Include="fonts\fa-regular-400.eot" />
-    <Content Include="fonts\fa-regular-400.ttf" />
-    <Content Include="fonts\fa-regular-400.woff" />
-    <Content Include="fonts\fa-regular-400d41d.eot" />
-    <Content Include="fonts\fa-solid-900.eot" />
-    <Content Include="fonts\fa-solid-900.ttf" />
-    <Content Include="fonts\fa-solid-900.woff" />
-    <Content Include="fonts\fa-solid-900d41d.eot" />
-    <Content Include="fonts\Flaticon.ttf" />
-    <Content Include="fonts\Flaticon.woff" />
-    <Content Include="fonts\fontawesome-webfont3295.eot" />
-    <Content Include="fonts\fontawesome-webfont3295.ttf" />
-    <Content Include="fonts\fontawesome-webfont3295.woff" />
-    <Content Include="fonts\fontawesome-webfont3295.woff2" />
-    <Content Include="fonts\fontawesome-webfontd41d.eot" />
-    <Content Include="fonts\glyphicons-halflings-regulard41d.eot" />
-    <Content Include="fonts\Pe-icon-7-strokebb1d.eot" />
-    <Content Include="fonts\Pe-icon-7-strokebb1d.ttf" />
-    <Content Include="fonts\Pe-icon-7-strokebb1d.woff" />
-    <Content Include="fonts\Pe-icon-7-stroked41d.eot" />
-    <Content Include="fonts\Stroke-Gap-Icons.eot" />
-    <EntityDeploy Include="Models\Model1.edmx">
+    <EntityDeploy Include="Models\eTUITORModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+      <LastGenOutput>eTUITORModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\Model1.edmx.diagram">
-      <DependentUpon>Model1.edmx</DependentUpon>
+    <Content Include="Models\eTUITORModel.edmx.diagram">
+      <DependentUpon>eTUITORModel.edmx</DependentUpon>
     </Content>
-    <Content Include="Content\build\fonts\Linearicons-Free.eot" />
-    <Content Include="Content\build\fonts\Linearicons-Free.ttf" />
-    <Content Include="Content\build\fonts\Linearicons-Free.woff" />
-    <Content Include="Content\build\fonts\Linearicons-Free.woff2" />
+    <Content Include="Content\vendor\bootstrap-datepicker\.editorconfig" />
+    <Content Include="Content\vendor\bootstrap-datepicker\.github\ISSUE_TEMPLATE.md" />
+    <Content Include="Content\vendor\bootstrap-datepicker\.github\PULL_REQUEST_TEMPLATE.md" />
+    <Content Include="Content\vendor\bootstrap-datepicker\.travis.yml" />
+    <Content Include="Content\vendor\bootstrap-datepicker\bower.json" />
+    <Content Include="Content\vendor\bootstrap-datepicker\build\build.less" />
+    <Content Include="Content\vendor\bootstrap-datepicker\build\build3.less" />
+    <Content Include="Content\vendor\bootstrap-datepicker\build\build_standalone.less" />
+    <Content Include="Content\vendor\bootstrap-datepicker\build\build_standalone3.less" />
+    <Content Include="Content\vendor\bootstrap-datepicker\CHANGELOG.md" />
+    <Content Include="Content\vendor\bootstrap-datepicker\CODE_OF_CONDUCT.md" />
+    <Content Include="Content\vendor\bootstrap-datepicker\composer.json" />
+    <Content Include="Content\vendor\bootstrap-datepicker\CONTRIBUTING.md" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\css\bootstrap-datepicker.css.map" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\css\bootstrap-datepicker.standalone.css.map" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\css\bootstrap-datepicker3.css.map" />
+    <Content Include="Content\vendor\bootstrap-datepicker\dist\css\bootstrap-datepicker3.standalone.css.map" />
+    <Content Include="Content\vendor\bootstrap-datepicker\docs\conf.py" />
+    <Content Include="Content\vendor\bootstrap-datepicker\docs\events.rst" />
+    <Content Include="Content\vendor\bootstrap-datepicker\docs\i18n.rst" />
+    <Content Include="Content\vendor\bootstrap-datepicker\docs\index.rst" />
+    <Content Include="Content\vendor\bootstrap-datepicker\docs\keyboard.rst" />
+    <Content Include="Content\vendor\bootstrap-datepicker\docs\make.bat" />
+    <Content Include="Content\vendor\bootstrap-datepicker\docs\Makefile" />
+    <Content Include="Content\vendor\bootstrap-datepicker\docs\markup.rst" />
+    <Content Include="Content\vendor\bootstrap-datepicker\docs\methods.rst" />
+    <Content Include="Content\vendor\bootstrap-datepicker\docs\options.rst" />
+    <Content Include="Content\vendor\bootstrap-datepicker\docs\README.md" />
+    <Content Include="Content\vendor\bootstrap-datepicker\grunt\.jshintrc" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\.jscsrc" />
+    <Content Include="Content\vendor\bootstrap-datepicker\js\.jshintrc" />
+    <Content Include="Content\vendor\bootstrap-datepicker\less\.csslintrc" />
+    <Content Include="Content\vendor\bootstrap-datepicker\less\datepicker.less" />
+    <Content Include="Content\vendor\bootstrap-datepicker\less\datepicker3.less" />
+    <Content Include="Content\vendor\bootstrap-datepicker\LICENSE" />
+    <Content Include="Content\vendor\bootstrap-datepicker\package.json" />
+    <Content Include="Content\vendor\bootstrap-datepicker\README.md" />
+    <Content Include="Content\vendor\bootstrap-datepicker\tests\README.md" />
+    <Content Include="Content\vendor\bootstrap-datepicker\yarn.lock" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -845,30 +886,49 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Views\Web.config">
-      <SubType>Designer</SubType>
-    </Content>
+    <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Shared\Common\_Header.cshtml" />
     <Content Include="Views\Shared\Common\_Footer.cshtml" />
+    <Content Include="Views\Shared\Common\_Header.cshtml" />
     <Content Include="Views\Shared\_Layout_homepage.cshtml" />
-    <Content Include="Views\User\Register.cshtml" />
-    <Content Include="Views\Tutor\ListOfTutors.cshtml" />
-    <Content Include="Views\Tutor\ViewDetailTutor.cshtml" />
-    <Content Include="Views\Tutor\InfoOfTutor.cshtml" />
-    <Content Include="Views\Tutor\RegisterTutor.cshtml" />
-    <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\Student\InfoOfStudent.cshtml" />
+    <Content Include="Views\Tutor\InfoOfTutor.cshtml" />
+    <Content Include="Views\Tutor\ListOfTutors.cshtml" />
+    <Content Include="Views\Tutor\RegisterTutor.cshtml" />
+    <Content Include="Views\Tutor\ViewDetailTutor.cshtml" />
     <Content Include="Views\User\ConfirmEmail.cshtml" />
+    <Content Include="Views\User\Login.cshtml" />
+    <Content Include="Views\User\Register.cshtml" />
+    <Content Include="Views\Parent\InfoOfParent.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Notify\" />
+    <Folder Include="Content\build\img\aboutus\" />
+    <Folder Include="Content\build\img\admin\" />
+    <Folder Include="Content\build\img\avatar\" />
+    <Folder Include="Content\build\img\banner\" />
+    <Folder Include="Content\build\img\chung_chi\" />
+    <Folder Include="Content\build\img\contact\icons\" />
+    <Folder Include="Content\build\img\event\" />
+    <Folder Include="Content\build\img\explore\" />
+    <Folder Include="Content\build\img\flaticon-png\small\" />
+    <Folder Include="Content\build\img\icon\" />
+    <Folder Include="Content\build\img\lightbox\" />
+    <Folder Include="Content\build\img\login_admin\" />
+    <Folder Include="Content\build\img\partnership\" />
+    <Folder Include="Content\build\img\pattern\" />
+    <Folder Include="Content\build\img\photos\" />
+    <Folder Include="Content\build\img\recent-work\" />
+    <Folder Include="Content\build\img\register\" />
+    <Folder Include="Content\build\img\slider\" />
+    <Folder Include="Content\build\img\svg-icons\" />
+    <Folder Include="Content\build\img\teacher\" />
+    <Folder Include="Content\build\img\testimonials\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -898,9 +958,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>61347</DevelopmentServerPort>
+          <DevelopmentServerPort>52781</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:61347/</IISUrl>
+          <IISUrl>http://localhost:52781/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
@@ -915,6 +975,7 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.10.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.10.0\build\Microsoft.Net.Compilers.props'))" />
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
